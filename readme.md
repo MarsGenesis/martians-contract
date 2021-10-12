@@ -1,211 +1,51 @@
-![1500x500-2](https://user-images.githubusercontent.com/3911039/134815047-cc3f2ae5-283c-4d3a-8b16-711c1c3b1166.jpeg)
 
-# MarsGenesis Martians ERC721 Token <img src="https://img.shields.io/badge/Solidity-0.8.0-green" /> <img src="https://img.shields.io/badge/Last Update-Sept'2021-yellow" /> 
+![1500x500](https://user-images.githubusercontent.com/85486368/137010267-d92ea2af-ff01-46b8-b4b1-cb84f7820881.jpeg)
+
+# MarsGenesis Martians ERC721 Token <img src="https://img.shields.io/badge/Solidity-0.8.0-green" /> <img src="https://img.shields.io/badge/Last Update-Oct'2021-yellow" /> 
+
+Discover and mint => https://martians.marsgenesis.com/mint
 
 ## ⭐️ What is it ?
-ERC721 Token with:
-- 10,000 unique collectible 3D Martians, with proof of ownership stored on the Ethereum blockchain.
-- Each card represents a unique 3D Martian.
+The Martians is a collection of 10,000 unique 3D characters with proof of ownership stored on the Ethereum blockchain.
+The NFT contract that governs ownership is a standard ERC-721 that works with any compatible service or exchange.
+Each Martian’s owner will be given access to an additional asset pack that includes the full 3D model of their character.
 
-## 👾 How to deploy the contracts locally
-Install the following in your machine:
+## ⭐️ How to get one ?
+The Martians will come as a free mint (ETH fees may apply) to all Mars Genesis parcel owners who minted at least one parcel before October 15, 2021 @ 11:59 pm UTC.
+After October 15, 2021, anyone will be able to mint a Martian for 0.08 ETH.
 
-### 1. Truffle [▶️](https://www.trufflesuite.com)
-Truffle is the most popular development framework for Ethereum. 
-Requires you to install [nodejs](https://nodejs.org/en/) first. 
-Then, run:
+## ⭐️ Golden Martians
+If you mint one of our 5 Golden Martians (with a solid gold skin), we will offer to buy it back (Only after the 10,000 martians are minted) at a floor price of
+10 ETH
+The Golden Martians are randomly distributed and you have an equal chance to mint one either for free or for 0.08 ETH after October 15.
 
-```sh
-$ npm install truffle -g
-```
---- 
+## ⭐️ 40 crypto-factions
+Each Martian will belong to a crypto-faction represented by one of the 40 most popular cryptocurrencies.
+Want to show your support to your favorite crypto? How about using your Martian?
 
-### 2. Ganache [▶️](https://www.trufflesuite.com/ganache)
+## ⭐️ The Battle of Martians
+If you own a Martian, you can challenge another Martian from a different faction and win their Martian.
+If the owner accepts, then the cryptocurrency that grows the most* (percentage wise) in the next 24 hours will give the victory to its Martian.
 
-Ganache gives you a local blockchain that you can interact with using truffle commands. It is like having the ETH network inside your own machine! Perfect for local test and development.
+_e.g._
+Martian #345 (DOGE) challenges Martian #6194 (BTC)
+Martian #6194 accepts on December 12, 2021 at 4:23 pm UTC
+After 24h, DOGE went down by 12.3% while BTC went down by 7.3%. BTC grew the most (or shrunk the least).
+Martian #6194 (BTC) is therefore the winner
+The winner will receive the NFT of the loser. In the above example, the owner of Martian #6194 will receive the NFT Martian #345.
+Please be very cautious before challenging or accepting a challenge.
+You may lose your NFT. Only the brave ones will conquer Mars. Fight, collect and grow your martian army.
+*Measured by CoinMarketCap.com
 
-Download it from [here](https://www.trufflesuite.com/ganache)
+## ⭐️ Links
+Smart Contract, verified on Etherscan => https://etherscan.io/address/0xe6DDbEa6749Cc793bA12Ac22BcA03c3f1Fcf3A80
 
----
+Opensea Martians Collection => https://opensea.io/collection/3dmartians
 
-### 3. Clone the project
-Clone the project to your favorite local directory:
+Opensea MarsGenesis Collection => https://opensea.io/collection/marsgenesis
 
-```sh
-$ git clone https://github.com/crypto-martians-contract.git
-```
-
-Then go into the project main folder:
-
-```sh
-$ cd crypto-martians-contract/
-```
-
-Then install the dependencies listed in `package.json` with:
-
-```sh
-$ npm install
-```
----
-
-### 4. Compile and Migrate the contracts
-Now you need to compile the contracts of the project and migrate them to generate the ABIs. First, run:
-
-```sh
-$ truffle compile
-```
-
-Then open the Ganache app. You can use the `Quickstart` method. One click and ready:
-
-<img align="center" width="700" alt="ganache" src="https://user-images.githubusercontent.com/3911039/113735040-c322f700-96f3-11eb-8583-b964fbf1ee0a.png">
-
-With the local blockchain ready (you should see a list with 10 accounts or so, each with 100ETH balance), migrate the contracts with:
-
-```sh
-$ truffle migrate
-```
-
-This will deploy the contracts in your local blockchain. You should see a summary with the cost, and the balance of your first account on Ganache should have decreased from the initial 100 ETH.
-
-```console
-Summary
-=======
-> Total deployments:   3
-> Final cost:          0.17415532 ETH
-```
-
-<details><summary><b>If you run into any issue at this point, check this⚠️</b></summary>
-In the `truffle-config.js` configuration file we specify the network details for development. This details should match your Ganache network details. Double check them and update the accordingly
-    
-```json
-module.exports = {
-  networks: {
-    development: {
-    host: "127.0.0.1",     
-    port: 7545,            
-    network_id: "*",
-    gas: 12000000
-    }
-  }
-}
-```
-</details>
-
----
-
-### 5. Test that the contract is deployed locally and responds to commands
-You can use truffle console to send commands to the smart contract. Lets try it out so we can be sure that the contracts are deployed.
-
-Start the truffle console:
-
-```sh
-$ truffle console
-```
-
-Now, let's grab the deployed `MarsGenesisMartiansCore` contract, call its method `totalSupply()` and check that the call returns `0`:
-
-```sh
-truffle(development)> contract = await MarsGenesisMartiansCore.deployed();
-undefined
-truffle(development)> supply = await contract.totalSupply.call();
-undefined
-truffle(development)> supply.toNumber()
-0
-```
-
-We can do the same check with the auction contract `MarsGenesisMartiansAuction`. Lets call a method on it and check that it works:
-
-```sh
-truffle(development)> contractAuction = await MarsGenesisMartiansAuction.deployed();
-undefined
-truffle(development)> isForSale = await contractAuction.martianIdIsForSale.call(0)
-undefined
-truffle(development)> isForSale
-false
-```
-
-So far so good! Contracts are deployed locally into your Ganache blockchain.
-
----
-
-### 6. Connecting your dApp to Ganache with MetaMask
-
-In order to connect your dApp (web) to your local, you will need also a ETH wallet. The easy option is to use `MetaMask`. Download it from [here](https://metamask.io/)
-
-With `MetaMask`, you can connect it to a local network (using the Custom network option) and it will appear in your network selector:
-
-<img width="364" alt="Screenshot 2021-04-06 at 16 42 18" src="https://user-images.githubusercontent.com/3911039/113739059-590c5100-96f7-11eb-8241-f60d7c0e71ab.png">
-
-‼️Make sure you select the localhost / ganache network after creating it‼️
-
-Finally, you will need to configure your web3 dApp to connect to the local blockchain and use MetaMask accounts. This is a sample code, not tested yet:
-
-<details><summary><b>See example code for web3📝</b></summary>
-    
-```javascript
-App = {
-loading: false,
-contracts: {},
-load: async () => {
-  await App.loadWeb3();
-  await App.loadAccount();
-  await App.loadContract();
-  await App.render();
-},
-loadWeb3: async () => {
-  if (typeof web3 !== "undefined") {
-    App.web3Provider = web3.currentProvider;
-    web3 = new Web3(web3.currentProvider);
-  } else {
-    window.alert("Please connect to Metamask.");
-  }
-if (window.ethereum) {
-  window.web3 = new Web3(ethereum);
-  try {
-    await ethereum.enable();
-    web3.eth.sendTransaction({});
-  } catch (error) {}
-} else if (window.web3) {
-  App.web3Provider = web3.currentProvider;
-  window.web3 = new Web3(web3.currentProvider);
-  web3.eth.sendTransaction({});
-} else {
-  console.log("Non-Ethereum browser detected. You should consider   trying MetaMask!");
-}
-},
-loadAccount: async () => {
-  // Set the current blockchain account
-  App.account = web3.eth.accounts[0];
-},
-loadContract: async () => {
-  // THIS PART WILL DIFFER FOR YOUR PROJECT
-  const counter = await $.getJSON("Counter.json");
-  App.contracts.counter = TruffleContract(counter);
-  App.contracts.counter.setProvider(App.web3Provider);
-  App.counter = await App.contracts.counter.deployed();
-},
-render: async () => {
-  if (App.loading) {
-    return;
-  }
-  $("#account").html(App.account);
-  await App.AddTransaction();
-},
-};
-$(() => {
-  $(window).load(() => {
-    App.load();
-  });
-});
-```
-
-</details>
-
----
-
-## 🚀 TO THE MOON!
-
-![giphy](https://user-images.githubusercontent.com/3911039/113741816-ee104980-96f9-11eb-9eb7-666ffcfad451.gif)
+Mint => https://martians.marsgenesis.com/mint
 
 
+![out001](https://user-images.githubusercontent.com/85486368/137010709-c83a04d3-07e4-44a7-9b9b-815c571a8bf8.png)
 
