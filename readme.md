@@ -38,7 +38,7 @@ You may lose your NFT. Only the brave ones will conquer Mars. Fight, collect and
 *Measured by CoinMarketCap.com
 
 ## ⭐️ Links
-Smart Contract, verified on Etherscan => https://etherscan.io/address/0xe6DDbEa6749Cc793bA12Ac22BcA03c3f1Fcf3A80
+Smart Contract, verified on Etherscan => https://etherscan.io/address/0x9f22b58A19B7Fa667C6723d558399617729f0C49
 
 Opensea Martians Collection => https://opensea.io/collection/3dmartians
 
